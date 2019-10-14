@@ -1,0 +1,17 @@
+version: '2.3'
+services:
+  cdk:
+    image: cdk:${CDK_VER}
+    build:
+      context: .
+      args:
+        - CDK_VER
+        - NODE_ENV
+        - NPM_TOKEN
+        - NODE_VER
+    environment: 
+      - AWS_REGION
+      - AWS_PROFILE
+    volumes:
+       - ${PWD}:/usr/src/app
+       - ${HOME}/.aws:/root/.aws
